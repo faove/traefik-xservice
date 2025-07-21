@@ -2,9 +2,9 @@ version: '3.8'
 
 networks:
   net_service:
-    name: net_service
-    driver: bridge
-
+    external: true
+  easypanel:
+    external: true
 services:
   traefik:
     image: traefik:v2.10
@@ -26,4 +26,5 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "./letsencrypt:/letsencrypt"
     networks:
+      - easypanel
       - net_service
